@@ -1,0 +1,9 @@
+
+    {% for item in list %}
+        {{ item.content }}
+        {% if item.children %}
+            {% with list=item.children %}
+                {% include 'jinja2_recursive_chunk.html' %}
+            {% endwith %}
+        {% endif %}
+    {% endfor %}
