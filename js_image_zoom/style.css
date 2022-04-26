@@ -1,0 +1,35 @@
+body
+{
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+    background: #020819;
+    display: flex;
+    align-content: center;
+    justify-content: space-around;
+    margin: 0;
+}
+
+*, ::after, ::before
+{
+    box-sizing: border-box;
+}
+
+#magnifying_area
+{
+    width: 800px;
+    height: 500px;
+    overflow: hidden;
+    border: 3px solid #fff;
+    position: relative;
+}
+
+#magnifying_img
+{
+    max-width: 100%;
+    min-width: 100%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
