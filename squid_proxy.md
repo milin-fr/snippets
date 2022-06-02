@@ -7,3 +7,4 @@
 7. http_port 3128
 8. http_access allow localnet
 9. acl localnet src "my ip"
+10. sudo systemctl restart squid
