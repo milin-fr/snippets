@@ -2,17 +2,21 @@ from threading import Thread
 import time
 import random
 
-def slow_function(i):
-    time.sleep(random.randint(1, 10))
-    print(i)
+def slow_function(thread_index):
+    time.sleep(random.randint(1, 10))  # simulates waiting time for an API call response for example
+    print("Thread {} done!".format(thread_index))
 
-def running_threads():
+def run_threads():
     threads = []
-    for i in range(10):
-        t = Thread(target=slow_function, args=(i,))
-        threads.append(t)
-        t.start()
-    for t in threads:
-        t.join()  # making sure that all your threads are done before doing something else with all results
+    for thread_index in range(5):
+        individual_thread = Thread(target=slow_function, args=(thread_index,))
+        threads.append(individual_thread)
+        individual_thread.start()
+    # at this point threads are running independently from each other and the main flow of application
+    print("Main flow of application")
+    for individual_thread in threads:
+        individual_thread.join()
+    # joining threads insures that all threads are done before moving further in the flow of application
+    print("All threads are done")
 
-running_threads()
+run_threads()
